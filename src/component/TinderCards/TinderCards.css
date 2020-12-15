@@ -1,0 +1,38 @@
+.card {
+    position: relative;
+    background-color: #95dada;
+    width: 600px;
+    padding: 20px;
+    max-width: 85vw;
+    height: 50vh;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.tinderCards__cardContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+}
+
+.tinderCards__cardContainer:hover{
+    transform: scale(1.05);
+}
+
+.swipe {
+    position: absolute;
+    
+}
+
+.card h3 {
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+    color: #fff;
+}
