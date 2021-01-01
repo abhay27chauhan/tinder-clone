@@ -1,3 +1,10 @@
+.tinderCards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .card {
     position: relative;
     background-color: #95dada;
@@ -14,7 +21,7 @@
 .tinderCards__cardContainer {
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -34,5 +41,14 @@
     position: absolute;
     bottom: 0;
     margin: 10px;
+    color: #fff;
+}
+
+.tinderCards__textContainer{
+    position: absolute;
+    top: 76vh;
+}
+
+h2{
     color: #fff;
 }

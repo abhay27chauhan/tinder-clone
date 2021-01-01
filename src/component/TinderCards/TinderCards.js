@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import './TinderCards.css';
 import axios from '../../axios';
 
 function TinderCards() {
     const [monsters, setMonsters] = useState([]);
+    const [lastDirection, setLastDirection] = useState()
 
     useEffect(() => {
         async function fetchData(){
@@ -16,19 +17,26 @@ function TinderCards() {
         fetchData(); 
     }, [])
 
+    let charactersState = monsters
+
     const swiped = (direction, nameToDelete) => {
         console.log("removing: " + nameToDelete);
+        setLastDirection(direction);
     }
 
     const outOfFrame = name => {
         console.log(name + " left the screen");
+        charactersState = charactersState.filter(character => character.name !== name);
+        setMonsters(charactersState);
     }
 
     return (
         <div className="tinderCards">
+            <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
+            <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
             <div className="tinderCards__cardContainer">
                 {
-                    monsters.map(monster => (
+                    monsters.map((monster) => (
                         <TinderCard 
                             className="swipe"
                             key={monster.id}
@@ -45,6 +53,9 @@ function TinderCards() {
                         </TinderCard>))
                 }
             </div>
+            <div className="tinderCards__textContainer">
+                {lastDirection ? <h2 key={lastDirection} className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'>Swipe a card to get started!</h2>}
+            </div> 
         </div>
     )
 }
